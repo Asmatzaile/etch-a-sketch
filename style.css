@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    background-color:rgb(224, 241, 196);
+}
+
+
+.square {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 3px;
+    border: solid black 0.01px;
+}
+
+#board {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+    height: 50vw;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.center-child {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vw;
+    max-height: 100%;
+}
