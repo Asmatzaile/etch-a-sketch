@@ -15,15 +15,13 @@
                 <button id="rainbow" class="color"><span>Rainbow</span></button>
             </div>
             <button id="autoclear"><span>Autoclear</span></button>
-            <button id="clearboard"><span>Clear board</span></button>
-            <div class="panel flex">
+            <button id="clear-board"><span>Clear board</span></button>
+            <div id="size-panel" class="panel flex">
                 <span>Grid size</span>
                 <div class="slidecontainer">
-                    <input type="range" id="myRange" value="0">
+                    <input type="range" class="slider" id="myRange" min="0" max="100" value="50">
                 </div>
                 <p>16x16</p>
-                <!-- minimum 4x4, maximum 64x64, default 16
-                exponential or logarithmic increase -->
             </div>
         </div>
         <div id="board" class="shadow" draggable="false"></div>

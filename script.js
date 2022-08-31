@@ -2,12 +2,12 @@ const board = document.querySelector('#board');
 
 const boardDim = getComputedStyle(board).width;
 const boardGap = (+ getComputedStyle(board).gap.slice(0, -2) || 0); // the 0 is for when there's no gap defined
-const gridDiv = 16;
-const squareDim = (100 / gridDiv);
-const gapOffset= boardGap*(gridDiv-1)/gridDiv;
+
 
 let squares;
-function drawGrid() {
+function drawGrid(gridDiv) {
+const squareDim = (100 / gridDiv);
+const gapOffset= boardGap*(gridDiv-1)/gridDiv;
 board.replaceChildren();
 for (let i = 0; i < gridDiv ** 2; i++) {
     const square = document.createElement('div');
@@ -20,8 +20,7 @@ for (let i = 0; i < gridDiv ** 2; i++) {
 squares = document.querySelectorAll('.square');
 }
 
-
-drawGrid();
+updateGridSize(16);
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true);
@@ -30,16 +29,16 @@ document.body.onmouseup = () => (mouseDown = false);
 let autoclear;
 let selectedColor = 'black';
 
-function colorSquare(e) {
-    if (e.type === "mouseover" && !mouseDown) return;
+function colorSquare(event) {
+    if (event.type === "mouseover" && !mouseDown) return;
     // the previous line is a filter; when the event type is
     // mousedown it is bypassed; and when it is mouseover it is only
     // bypassed when the mouse is down 
-    clearTimeout(this.timeoutCode); // this and e.target are the same
+    clearTimeout(this.timeoutCode); // this and e.target are the same and IDK why
     this.style.transition = "0.08s";
     this.style.backgroundColor = getColor(); // to only change this attribute
     if (!autoclear) return;
-    this.timeoutCode = setTimeout(clearSquare, 2000, e.target);
+    this.timeoutCode = setTimeout(clearSquare, 2000, this);
 }
 
 function getColor() {
@@ -76,7 +75,7 @@ triggerButton(document.querySelector('#autoclear'));
 
 function triggerButton(button) {
         switch(button.id){
-            case 'clearboard':
+            case 'clear-board':
                 squares.forEach(clearSquare);
                 break;
             case 'autoclear':
@@ -109,7 +108,14 @@ function unselect(button) {
 }
 
 const slider = document.querySelector('#myRange');
-console.log(slider.value)
 slider.addEventListener('input', (e) => {
-    console.log(e.id);
+    const newSize = Math.floor((e.target.value / 100) ** 2 * 63 + 1);
+    updateGridSize(newSize);
 });
+
+function updateGridSize(newSize) {
+    gridDiv = newSize;
+    drawGrid(newSize);
+    const sizeText = document.querySelector('#size-panel p');
+    sizeText.textContent = `${newSize}x${newSize}`
+}
