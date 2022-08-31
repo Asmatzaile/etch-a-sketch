@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: ubuntu;
 }
 
 body, html {
@@ -9,14 +10,21 @@ body, html {
     background-color:rgb(224, 241, 196);
 }
 
+#canvas {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
 #board {
     background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
     height: 50vw;
     width: 50vw;
     display: flex;
     flex-wrap: wrap;
+    z-index: 1;
 }
 
 .center-child {
@@ -25,4 +33,58 @@ body, html {
     align-items: center;
     height: 100vw;
     max-height: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#control-panel {
+    background-color: rgb(186, 186, 186);
+}
+
+#colors-panel {
+    background-color: rgba(160, 160, 160, 0.797);
+
+}
+
+.panel {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.shadow {
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+span {
+    text-transform: uppercase;
+}
+
+button {
+    width: 100%;
+    transition: all 0.08s;
+    background: none;
+    border: solid black 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+#clearboard:active {
+    background-color: rgb(255, 44, 44);
+}
+
+.maxwidth {
+    width: 100%;
+}
+
+.selected {
+    background-color:rgba(78, 255, 90, 0.797);
 }

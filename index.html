@@ -9,7 +9,24 @@
 </head>
 <body>
     <div class="center-child">
-        <div id="board" draggable="false"></div>
+        <div id="control-panel" class="panel flex shadow">
+            <div id="colors-panel" class="panel flex maxwidth"><span>Colors</span>
+                <button id="black" class="color"><span>Black</span></button>
+                <button id="rainbow" class="color"><span>Rainbow</span></button>
+            </div>
+            <button id="autoclear"><span>Autoclear</span></button>
+            <button id="clearboard"><span>Clear board</span></button>
+            <div class="panel flex">
+                <span>Grid size</span>
+                <div class="slidecontainer">
+                    <input type="range" id="myRange" value="0">
+                </div>
+                <p>16x16</p>
+                <!-- minimum 4x4, maximum 64x64, default 16
+                exponential or logarithmic increase -->
+            </div>
+        </div>
+        <div id="board" class="shadow" draggable="false"></div>
     </div>
 </body>
 </html>
