@@ -13,3 +13,5 @@ The steps to follow are:
 3. Set up a "hover" effect so that the grid divs change color when your mouse passes over them, leaving a trail through your grid like a pen would.
 
 4. Add a functionality to let the user change the number of squares per side for the new grid.
+
+5. Publish the project in GitHub Pages.
